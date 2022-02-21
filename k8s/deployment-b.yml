@@ -20,11 +20,6 @@ spec:
           ports:
             - containerPort: 3333
           env:
-            - name: MONGO_DATABASE
-              valueFrom:
-                configMapKeyRef:
-                  name: mongodb
-                  key: database-name
             - name: MONGO_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -35,3 +30,16 @@ spec:
                 secretKeyRef:
                   name: mongodb
                   key: database-password
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-b
+spec:
+  selector:
+    app: service-b
+  ports:
+    - port: 3333
+      targetPort: 3333
+  type: NodePort

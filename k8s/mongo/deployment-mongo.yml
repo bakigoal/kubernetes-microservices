@@ -16,15 +16,10 @@ spec:
     spec:
       containers:
         - name: mongodb
-          image: mongo:latest
+          image: arm64v8/mongo:latest
           ports:
             - containerPort: 27017
           env:
-            - name: MONGO_INITDB_DATABASE
-              valueFrom:
-                configMapKeyRef:
-                  name: mongodb
-                  key: database-name
             - name: MONGO_INITDB_ROOT_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -48,4 +43,14 @@ spec:
       protocol: TCP
   selector:
     app: mongodb
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mongodb
+type: Opaque
+data:
+  database-user: cGlvdHI=
+  database-password: MTIzNDU2
 
