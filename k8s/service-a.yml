@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-a
+spec:
+  selector:
+    run: service-a
+  ports:
+    - name: port1
+      protocol: TCP
+      port: 2222
+      targetPort: 2222
+  type: LoadBalancer

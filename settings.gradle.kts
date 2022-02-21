@@ -1,3 +1,3 @@
 rootProject.name = "kubernetes-microservices"
 
-include("service-a")
+include("service-a", "service-b")
