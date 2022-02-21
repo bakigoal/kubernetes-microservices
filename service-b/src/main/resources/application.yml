@@ -6,4 +6,5 @@ spring:
     name: service-b
   data:
     mongodb:
-      uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb/microservices
+      uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb
+      database: mydb
