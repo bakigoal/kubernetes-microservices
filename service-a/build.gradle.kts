@@ -21,6 +21,8 @@ dependencies {
     // caching
     implementation("org.springframework.data:spring-data-redis")
     implementation("redis.clients:jedis")
+    // messaging
+    implementation ("org.springframework.kafka:spring-kafka")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")

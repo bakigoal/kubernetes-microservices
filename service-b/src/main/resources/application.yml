@@ -12,3 +12,8 @@ spring:
 logging:
   level:
     com.bakigoal: DEBUG
+
+kafka:
+  bootstrapAddress: 192.168.0.111:29092
+  topics:
+    resource_b_changed: resource_b_changed_topic

@@ -1,7 +1,7 @@
 package com.bakigoal.serviceb.rest
 
 import com.bakigoal.serviceb.model.ResourceB
-import com.bakigoal.serviceb.repo.ResourceBRepo
+import com.bakigoal.serviceb.service.ResourceBService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import java.util.*
@@ -9,35 +9,35 @@ import java.util.*
 @RestController
 @RequestMapping("/v1/b")
 class ResourceBController(
-    @Autowired val resourceBRepo: ResourceBRepo
+    @Autowired val bService: ResourceBService
 ) {
 
     @GetMapping
     fun getResourceA(): List<ResourceB> {
-        return resourceBRepo.findAll()
+        return bService.findAll()
     }
 
     @GetMapping("/{id}")
     fun getResource(@PathVariable id: String): Optional<ResourceB> {
-        return resourceBRepo.findById(id)
+        return bService.findById(id)
     }
 
     @PostMapping
     fun createResource(@RequestBody resourceB: ResourceB): ResourceB {
-        return resourceBRepo.save(resourceB)
+        return bService.save(resourceB)
     }
 
     @PutMapping("/{id}")
     fun updateResource(@PathVariable id: String, @RequestBody resourceB: ResourceB): ResourceB {
         resourceB.id = id
-        return resourceBRepo.save(resourceB)
+        return bService.update(resourceB)
     }
 
     @DeleteMapping("/{id}")
     fun createResource(@PathVariable id: String): Optional<ResourceB> {
-        val findById = resourceBRepo.findById(id)
+        val findById = bService.findById(id)
         if (findById.isPresent) {
-            resourceBRepo.deleteById(id)
+            bService.deleteById(id)
         }
         return findById
     }
