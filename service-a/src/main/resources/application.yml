@@ -4,3 +4,7 @@ server:
 spring:
   application:
     name: service-a
+
+logging:
+  level:
+    com.bakigoal: DEBUG

@@ -17,6 +17,11 @@ class ResourceBController(
         return resourceBRepo.findAll()
     }
 
+    @GetMapping("/{id}")
+    fun getResource(@PathVariable id: String): Optional<ResourceB> {
+        return resourceBRepo.findById(id)
+    }
+
     @PostMapping
     fun createResource(@RequestBody resourceB: ResourceB): ResourceB {
         return resourceBRepo.save(resourceB)

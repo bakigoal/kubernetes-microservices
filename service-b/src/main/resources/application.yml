@@ -8,3 +8,7 @@ spring:
     mongodb:
       uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb
       database: mydb
+
+logging:
+  level:
+    com.bakigoal: DEBUG

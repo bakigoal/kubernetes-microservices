@@ -18,9 +18,14 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    // caching
+    implementation("org.springframework.data:spring-data-redis")
+    implementation("redis.clients:jedis")
+
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
