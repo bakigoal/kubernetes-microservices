@@ -6,7 +6,7 @@ spring:
     name: service-b
   data:
     mongodb:
-      uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb
+      uri: mongodb://mongo:mongo@192.168.0.111
       database: mydb
 
 logging:

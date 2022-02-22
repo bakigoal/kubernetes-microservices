@@ -5,6 +5,7 @@ import com.bakigoal.servicea.repo.RedisRepo
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpMethod
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestTemplate
@@ -14,6 +15,8 @@ import java.util.*
 class ResourceBClient(
     @Autowired val redisRepo: RedisRepo
 ) {
+    @Value("\${services.service-b.url}")
+    lateinit var serviceB: String
 
     companion object {
         val logger: Logger = LoggerFactory.getLogger(ResourceBClient::class.java)
@@ -52,7 +55,7 @@ class ResourceBClient(
     }
 
     private fun getFromServiceB(id: String): ResourceB? {
-        val serviceUri = "http://service-b:3333/v1/b/$id"
+        val serviceUri = "$serviceB/v1/b/$id"
         val exchange = RestTemplate().exchange(
             serviceUri,
             HttpMethod.GET, null, ResourceB::class.java, id
